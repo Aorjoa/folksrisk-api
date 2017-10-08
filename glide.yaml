@@ -1,4 +1,11 @@
 package: .
 import:
-- package: github.com/gin-gonic/gin
-  version: ^1.2.0
+- package: github.com/labstack/echo
+  version: ^3.2.3
+  subpackages:
+  - '...'
+- package: github.com/jinzhu/gorm
+  version: ^1.0.0
+- package: golang.org/x/crypto
+  subpackages:
+  - acme/autocert
