@@ -3,6 +3,7 @@ package main
 import (
 	"net/http"
 
+	"github.com/aorjoa/folksrisk-api/handle"
 	"github.com/aorjoa/folksrisk-api/model"
 	"github.com/aorjoa/folksrisk-api/service"
 
@@ -54,11 +55,8 @@ func main() {
 		return c.HTML(http.StatusOK, "Hello")
 	})
 
-	e.GET("/find", func(c echo.Context) error {
-		personal := []model.Personal{}
-		db.Find(&personal)
-		return c.JSON(http.StatusOK, personal)
-	})
+	e.GET("/list", handle.ListPerson)
+	e.PUT("/list", handle.UpdatePerson)
 
 	e.Logger.Fatal(e.StartTLS(":8443", "certs/cert.pem", "certs/key.pem"))
 }
