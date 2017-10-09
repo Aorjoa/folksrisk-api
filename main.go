@@ -53,5 +53,12 @@ func main() {
 	e.GET("/", func(c echo.Context) error {
 		return c.HTML(http.StatusOK, "Hello")
 	})
+
+	e.GET("/find", func(c echo.Context) error {
+		personal := []model.Personal{}
+		db.Find(&personal)
+		return c.JSON(http.StatusOK, personal)
+	})
+
 	e.Logger.Fatal(e.StartTLS(":8443", "certs/cert.pem", "certs/key.pem"))
 }

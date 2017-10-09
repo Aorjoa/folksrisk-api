@@ -7,15 +7,15 @@ import (
 // Personal stores name of risk person
 type Personal struct {
 	gorm.Model
-	Identity     string `json:"identity"`
-	Name         string `json:"name"`
-	Email        string
-	Point        Point  `json:"point"`
-	Image        string `json:"image"`
-	BankAccounts []BankAccount
-	PhoneNumbers []PhoneNumber
-	Evidences    []Evidence `json:"evidences"`
-	Files        []File     `json:"files"`
+	Identity     string        `json:"identity"`
+	Name         string        `json:"name"`
+	Email        string        `json:"email"`
+	Point        Point         `json:"point"`
+	Image        string        `json:"image"`
+	BankAccounts []BankAccount `json:"bank_accounts"`
+	PhoneNumbers []PhoneNumber `json:"phone_numbers"`
+	Evidences    []Evidence    `json:"evidences"`
+	Files        []File        `json:"files"`
 }
 
 //BankAccount store bank account associate with person
