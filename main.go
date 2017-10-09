@@ -26,6 +26,8 @@ func main() {
 	//initial person
 	initPerson := &model.Personal{
 		Identity: "A001",
+		Name:     "Test Man",
+		Email:    "test@gmail.com",
 		Point: model.Point{
 			Risk:              -10,
 			PersinalIDVerify:  true,

@@ -9,6 +9,7 @@ type Personal struct {
 	gorm.Model
 	Identity     string `json:"identity"`
 	Name         string `json:"name"`
+	Email        string
 	Point        Point  `json:"point"`
 	Image        string `json:"image"`
 	BankAccounts []BankAccount
