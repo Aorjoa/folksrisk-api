@@ -1,13 +1,25 @@
 package main
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
+
+	"github.com/aorjoa/folksrisk-api/service"
+
+	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
+)
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "pong",
-		})
+	// Database
+	db := service.Database()
+	defer db.Close()
+
+	e := echo.New()
+	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
+
+	e.GET("/", func(c echo.Context) error {
+		return c.HTML(http.StatusOK, "Hello")
 	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+	e.Logger.Fatal(e.StartTLS(":8443", "certs/cert.pem", "certs/key.pem"))
 }
